@@ -205,3 +205,47 @@ echo "</pre>";
 echo '<br>';
 echo '9) ----------------------------------------------------------------------------------------------------';
 echo '<br>';
+// Paskaičiuokite 8 uždavinio masyvo visų reikšmių sumą ir išrūšiuokite masyvą taip, kad pirmiausiai 
+// eitų mažiausios masyvo reikšmės arba jeigu reikšmė yra masyvas, to masyvo reikšmių sumos.
+
+foreach($masyvas as $key => $value) {
+    if(is_array($value)) {
+        $sum = 0;
+        foreach($value as $elements) {
+            $sum += $elements;
+        }
+        echo $key . ' masyvas suma ' . $sum;
+        echo '<br>';
+    } else {
+        echo $key . ' skaicius ' . $value;
+        echo '<br>';
+    }
+}
+
+usort($masyvas, function($a, $b) {
+    $sum1 = 0;
+    $sum2 = 0;
+    if(is_array($a)) {
+        foreach($a as $element) {
+            $sum1 += $element;
+        }
+    } else {
+        $sum1 = $a;
+    }
+    if(is_array($b)) {
+        foreach($b as $el) {
+            $sum2 += $el;
+        }
+    } else {
+        $sum2 = $b;
+    }
+    return $sum1 <=> $sum2;
+});
+
+echo "<pre>";
+print_r($masyvas);
+echo "</pre>";
+
+echo '<br>';
+echo '10) ----------------------------------------------------------------------------------------------------';
+echo '<br>';
