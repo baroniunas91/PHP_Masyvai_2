@@ -1,6 +1,8 @@
 <?php
 echo '1) ----------------------------------------------------------------------------------------------------';
 echo '<br>';
+echo 'Sugeneruotas masyvas iš 10 elementų, kurio elementai yra masyvai iš 5 elementų su reikšmėmis nuo 5 iki 25';
+echo '<br>';
 // Sugeneruokite masyvą iš 10 elementų, kurio elementai būtų masyvai iš 5 elementų su reikšmėmis nuo 5 iki 25.
 $arr = [];
 foreach(range(0,9) as $value) {
@@ -106,7 +108,8 @@ echo '<br>';
 echo '4) ----------------------------------------------------------------------------------------------------';
 echo '<br>';
 // Išrūšiuokite trečio uždavinio pirmo lygio masyvą taip, kad elementai kurių masyvai trumpiausi eitų pradžioje.
-
+echo 'Išrūšiuojame trečio uždavinio pirmo lygio masyvą taip, kad elementai kurių masyvai trumpiausi eitų pradžioje';
+echo '<br>';
 for($i=0; $i < count($lettersArray)-1; $i++) {
     for($j=$i+1; $j<count($lettersArray); $j++) {
         if(count($lettersArray[$i]) > count($lettersArray[$j])) {
@@ -124,7 +127,8 @@ echo '<br>';
 echo '5) ----------------------------------------------------------------------------------------------------';
 echo '<br>';
 // Sukurkite masyvą iš 30 elementų. Kiekvienas masyvo elementas yra masyvas [user_id => xxx, place_in_row => xxx] 
-// user_id atsitiktinis unikalus skaičius nuo 1 iki 1000000, place_in_row atsitiktinis skaičius nuo 0 iki 100. 
+// user_id atsitiktinis unikalus skaičius nuo 1 iki 1000000, place_in_row atsitiktinis skaičius nuo 0 iki 100.
+echo 'Sukurtas masyvas iš 30 elementų. Kiekvienas masyvo elementas yra masyvas [user_id => xxx, place_in_row => xxx] user_id atsitiktinis unikalus skaičius nuo 1 iki 1000000, place_in_row atsitiktinis skaičius nuo 0 iki 100.';
 $userArray = [];
 foreach(range(0, 29) as $key) {
     $userArray[$key] = ['user_id' => rand(1, 1000000), 'place_in_row' => rand(0, 100)];
@@ -162,7 +166,10 @@ echo '7) -----------------------------------------------------------------------
 echo '<br>';
 // Prie 6 uždavinio masyvo antro lygio masyvų pridėkite dar du elementus: name ir surname. 
 // Elementus užpildykite stringais iš atsitiktinai sugeneruotų lotyniškų raidžių, kurių ilgiai nuo 5 iki 15.
-
+echo 'Prie 6 uždavinio masyvo antro lygio masyvų pridedame dar du elementus: name ir surname.';
+echo '<br>';
+echo 'Elementai užpildyti stringais iš atsitiktinai sugeneruotų lotyniškų raidžių, kurių ilgiai nuo 5 iki 15';
+echo '<br>';
 foreach($userArray as $key => $value) {
     $name = '';
     $surname = '';
@@ -185,7 +192,12 @@ echo '<br>';
 // Sukurkite masyvą iš 10 elementų. Masyvo reikšmes užpildykite pagal taisyklę: generuokite skaičių nuo 0 iki 5. 
 // Ir sukurkite tokio ilgio masyvą. Jeigu reikšmė yra 0 masyvo nekurkite. Antro lygio masyvo reikšmes užpildykite 
 // atsitiktiniais skaičiais nuo 0 iki 10. Ten kur masyvo nekūrėte reikšmę nuo 0 iki 10 įrašykite tiesiogiai.
-
+echo 'Sukurtas masyvas iš 10 elementų. Masyvo reikšmės užpildytos pagal taisyklę: generuokite skaičių nuo 0 iki 5.';
+echo '<br>';
+echo 'Ir sukuriame tokio ilgio masyvą. Jeigu reikšmė yra 0 masyvo nekuriame. Antro lygio masyvo reikšmes užpildome';
+echo '<br>';
+echo 'atsitiktiniais skaičiais nuo 0 iki 10. Ten kur masyvo nekūrėme reikšmę nuo 0 iki 10 įrašome tiesiogiai.';
+echo '<br>';
 $masyvas = [];
 foreach(range(0,9) as $key => $value) {
     $rand = rand(0, 5);
@@ -207,18 +219,22 @@ echo '9) -----------------------------------------------------------------------
 echo '<br>';
 // Paskaičiuokite 8 uždavinio masyvo visų reikšmių sumą ir išrūšiuokite masyvą taip, kad pirmiausiai 
 // eitų mažiausios masyvo reikšmės arba jeigu reikšmė yra masyvas, to masyvo reikšmių sumos.
-
+echo 'Paskaičiuojame 8 uždavinio masyvo visų reikšmių sumą ir išrūšiuojame masyvą taip, kad pirmiausiai';
+echo '<br>';
+echo 'eitų mažiausios masyvo reikšmės arba jeigu reikšmė yra masyvas, to masyvo reikšmių sumos.';
+echo '<br>';
+echo '<br>';
 foreach($masyvas as $key => $value) {
     if(is_array($value)) {
         $sum = 0;
         foreach($value as $elements) {
             $sum += $elements;
         }
-        echo $key . ' masyvas suma ' . $sum;
-        echo '<br>';
+        // echo $key . ' masyvas suma ' . $sum;
+        // echo '<br>';
     } else {
-        echo $key . ' skaicius ' . $value;
-        echo '<br>';
+        // echo $key . ' skaicius ' . $value;
+        // echo '<br>';
     }
 }
 
@@ -286,3 +302,32 @@ foreach($colorsArray as $value) {
 echo '<br>';
 echo '11) ----------------------------------------------------------------------------------------------------';
 echo '<br>';
+
+// Duotas kodas, generuojantis masyvą:
+// do {
+//     $a = rand(0, 1000);
+//     $b = rand(0, 1000);
+// } while ($a == $b);
+// $long = rand(10,30);
+// $sk1 = $sk2 = 0;
+// echo '<h3>Skaičiai '.$a.' ir '.$b.'</h3>';
+// $c = [];
+// for ($i=0; $i<$long; $i++) {
+//     $c[] = array_rand(array_flip([$a, $b]));
+// }
+// echo '<h4>Masyvas:</h4>';
+// echo '<pre>';
+// print_r($c);
+// echo '</pre>';
+// Reikia apskaičiuoti kiek buvo $sk1 ir $sk2 naudojantis matematika.
+// NEGALIMA! naudoti jokių palyginimo operatorių (if-else, swich, ()?:)
+// NEGALIMA! naudoti jokių regex ir string funkcijų.
+// GALIMA naudotis tik aritmetiniais veiksmais ir matematinėmis funkcijomis iš skyrelio: https://www.php.net/manual/en/ref.math.php
+
+// Jeigu reikia, kodo patogumui galima panaudoti įvairias funkcijas, bet sprendimo pagrindas turi būti matematinis.
+
+// Atsakymą reikia pateikti formatu:
+// echo '<h3>Skaičius 789 yra pakartotas '.$sk1.' kartų, o skaičius 123 - '.$sk2.' kartų.</h3>';
+
+// Kur rudi skaičiai yra pakeisti skaičiais $a ir $b generuojamais kodo.
+
