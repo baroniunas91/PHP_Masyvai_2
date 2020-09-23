@@ -249,3 +249,40 @@ echo "</pre>";
 echo '<br>';
 echo '10) ----------------------------------------------------------------------------------------------------';
 echo '<br>';
+// Sukurkite masyvą iš 10 elementų. Jo reikšmės masyvai iš 10 elementų. Antro lygio masyvų reikšmės masyvai su 
+// dviem elementais value ir color. Reikšmė value vienas iš atsitiktinai parinktų simbolių: 
+// #%+*@%, o reikšmė color atsitiktinai sugeneruota spalva formatu: #XXXXXX. Pasinaudoję masyvų atspausdinkite 
+// “kvadratą” kurį sudarytų masyvo reikšmės nuspalvintos spalva color.
+$colorsArray = [];
+foreach(range(0, 9) as $key => $values) {
+    foreach(range(0, 9) as $value) {
+        // Generuoju value
+        $value = '#%+*@%';
+        $value = str_split($value);
+        $rand = rand(0, 5);
+        // Generuoju spalvos koda
+        $generateColorArray = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
+        $color = '#';
+        foreach(range(0, 5) as $randomSymbol) {
+            $color .= $generateColorArray[rand(0, 15)];
+        }
+        $colorsArray[$key][] = ['value' => $value[$rand], 'color' => $color];
+    }
+}
+
+// echo "<pre>";
+// print_r($colorsArray);
+// echo "</pre>";
+echo 'Sugeneruotas iš masyvo kilimas:';
+echo '<br>';
+foreach($colorsArray as $value) {
+    foreach($value as $innerValue) {
+        $color = $innerValue['color'];
+        echo "<div style=\"display: inline-block; width: 30px; height: 30px; background-color: $color\"></div>";
+    }
+    echo '<br>';
+}
+
+echo '<br>';
+echo '11) ----------------------------------------------------------------------------------------------------';
+echo '<br>';
