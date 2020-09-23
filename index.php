@@ -138,4 +138,48 @@ echo '6) -----------------------------------------------------------------------
 echo '<br>';
 // Išrūšiuokite 6 uždavinio masyvą pagal user_id didėjančia tvarka. 
 // Ir paskui išrūšiuokite pagal place_in_row mažėjančia tvarka.
+echo 'Išrūšiuojame masyva pagal user_id didėjančia tvarka.';
+echo '<br>';
+//Naudoju spaceship operatorių, nuo PHP 7 veikia.
+usort($userArray, function($a, $b) {
+    return $a[0]['user_id'] <=> $b[0]['user_id'];
+});
+echo "<pre>";
+print_r($userArray);
+echo "</pre>";
+
+echo 'Išrūšiuojame masyva pagal place_in_row mažėjančia tvarka.';
+echo '<br>';
+usort($userArray, function($a, $b) {
+    return $b[0]['place_in_row'] <=> $a[0]['place_in_row'];
+});
+echo "<pre>";
+print_r($userArray);
+echo "</pre>";
+
+echo '<br>';
+echo '7) ----------------------------------------------------------------------------------------------------';
+echo '<br>';
+// Prie 6 uždavinio masyvo antro lygio masyvų pridėkite dar du elementus: name ir surname. 
+// Elementus užpildykite stringais iš atsitiktinai sugeneruotų lotyniškų raidžių, kurių ilgiai nuo 5 iki 15.
+
+foreach($userArray as $key => $value) {
+    $name = '';
+    $surname = '';
+    foreach(range(1, rand(5, 15)) as $letter) {
+        $name .= $letters[rand(0,25)];
+    }
+    foreach(range(1, rand(5, 15)) as $letter) {
+        $surname .= $letters[rand(0,25)];
+    }
+    $arr = ['name' => $name, 'surname' => $surname];
+    $userArray[$key][0] = array_merge($userArray[$key][0], $arr);
+}
+echo "<pre>";
+print_r($userArray);
+echo "</pre>";
+
+echo '<br>';
+echo '8) ----------------------------------------------------------------------------------------------------';
+echo '<br>';
 
