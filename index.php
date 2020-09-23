@@ -127,7 +127,7 @@ echo '<br>';
 // user_id atsitiktinis unikalus skaičius nuo 1 iki 1000000, place_in_row atsitiktinis skaičius nuo 0 iki 100. 
 $userArray = [];
 foreach(range(0, 29) as $key) {
-    $userArray[$key][] = ['user_id' => rand(1, 1000000), 'place_in_row' => rand(0, 100)];
+    $userArray[$key] = ['user_id' => rand(1, 1000000), 'place_in_row' => rand(0, 100)];
 }
 echo "<pre>";
 print_r($userArray);
@@ -142,7 +142,7 @@ echo 'Išrūšiuojame masyva pagal user_id didėjančia tvarka.';
 echo '<br>';
 //Naudoju spaceship operatorių, nuo PHP 7 veikia.
 usort($userArray, function($a, $b) {
-    return $a[0]['user_id'] <=> $b[0]['user_id'];
+    return $a['user_id'] <=> $b['user_id'];
 });
 echo "<pre>";
 print_r($userArray);
@@ -151,7 +151,7 @@ echo "</pre>";
 echo 'Išrūšiuojame masyva pagal place_in_row mažėjančia tvarka.';
 echo '<br>';
 usort($userArray, function($a, $b) {
-    return $b[0]['place_in_row'] <=> $a[0]['place_in_row'];
+    return $b['place_in_row'] <=> $a['place_in_row'];
 });
 echo "<pre>";
 print_r($userArray);
@@ -173,7 +173,7 @@ foreach($userArray as $key => $value) {
         $surname .= $letters[rand(0,25)];
     }
     $arr = ['name' => $name, 'surname' => $surname];
-    $userArray[$key][0] = array_merge($userArray[$key][0], $arr);
+    $userArray[$key] = array_merge($userArray[$key], $arr);
 }
 echo "<pre>";
 print_r($userArray);
@@ -182,4 +182,26 @@ echo "</pre>";
 echo '<br>';
 echo '8) ----------------------------------------------------------------------------------------------------';
 echo '<br>';
+// Sukurkite masyvą iš 10 elementų. Masyvo reikšmes užpildykite pagal taisyklę: generuokite skaičių nuo 0 iki 5. 
+// Ir sukurkite tokio ilgio masyvą. Jeigu reikšmė yra 0 masyvo nekurkite. Antro lygio masyvo reikšmes užpildykite 
+// atsitiktiniais skaičiais nuo 0 iki 10. Ten kur masyvo nekūrėte reikšmę nuo 0 iki 10 įrašykite tiesiogiai.
 
+$masyvas = [];
+foreach(range(0,9) as $key => $value) {
+    $rand = rand(0, 5);
+    foreach(range(0, $rand) as $vidinisMasyvas) {
+        if(!($rand === 0)) {
+            $masyvas[$key][] = rand(0,10);
+        } else {
+            $masyvas[$key] = rand(0,10);
+        }
+    }
+}
+
+echo "<pre>";
+print_r($masyvas);
+echo "</pre>";
+
+echo '<br>';
+echo '9) ----------------------------------------------------------------------------------------------------';
+echo '<br>';
