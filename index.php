@@ -323,11 +323,17 @@ print_r($c);
 echo '</pre>';
 
 foreach($c as $value) {
-    $sk1 += floor(cos($a - $value));
-    $sk2 += floor(cos($value - $b));
+    $sk1 += floor(abs(cos($a - $value)));
+    $sk2 += floor(abs(cos($value - $b)));
+    // echo '<br>';
+    // echo "sk1 $sk1";
+    // echo '<br>';
+    // echo "sk2 $sk2";
+    // echo '<br>';
 }
-$sk1 = abs($sk1);
-$sk2 = abs($sk2);
+// $sk1 = abs($sk1);
+// $sk2 = abs($sk2);
+
 // Reikia apskaičiuoti kiek buvo $sk1 ir $sk2 naudojantis matematika.
 // NEGALIMA! naudoti jokių palyginimo operatorių (if-else, swich, ()?:)
 // NEGALIMA! naudoti jokių regex ir string funkcijų.
