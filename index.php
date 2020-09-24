@@ -286,15 +286,17 @@ foreach(range(0, 9) as $key => $values) {
     }
 }
 
-// echo "<pre>";
-// print_r($colorsArray);
-// echo "</pre>";
+echo "<pre>";
+print_r($colorsArray);
+echo "</pre>";
+echo '<br>';
 echo 'Sugeneruotas iš masyvo kilimas:';
 echo '<br>';
 foreach($colorsArray as $value) {
     foreach($value as $innerValue) {
         $color = $innerValue['color'];
-        echo "<div style=\"display: inline-block; width: 30px; height: 30px; background-color: $color\"></div>";
+        $content = $innerValue['value'];
+        echo "<div style=\"display: inline-block; width: 30px; height: 30px; font-size: 25px; text-align: center; background-color: $color\">$content</div>";
     }
     echo '<br>';
 }
@@ -304,21 +306,28 @@ echo '11) ----------------------------------------------------------------------
 echo '<br>';
 
 // Duotas kodas, generuojantis masyvą:
-// do {
-//     $a = rand(0, 1000);
-//     $b = rand(0, 1000);
-// } while ($a == $b);
-// $long = rand(10,30);
-// $sk1 = $sk2 = 0;
-// echo '<h3>Skaičiai '.$a.' ir '.$b.'</h3>';
-// $c = [];
-// for ($i=0; $i<$long; $i++) {
-//     $c[] = array_rand(array_flip([$a, $b]));
-// }
-// echo '<h4>Masyvas:</h4>';
-// echo '<pre>';
-// print_r($c);
-// echo '</pre>';
+do {
+    $a = rand(0, 1000);
+    $b = rand(0, 1000);
+} while ($a == $b);
+$long = rand(10,30);
+$sk1 = $sk2 = 0;
+echo '<h3>Skaičiai '.$a.' ir '.$b.'</h3>';
+$c = [];
+for ($i=0; $i<$long; $i++) {
+    $c[] = array_rand(array_flip([$a, $b]));
+}
+echo '<h4>Masyvas:</h4>';
+echo '<pre>';
+print_r($c);
+echo '</pre>';
+
+foreach($c as $value) {
+    $sk1 += floor(cos($a - $value));
+    $sk2 += floor(cos($value - $b));
+}
+$sk1 = abs($sk1);
+$sk2 = abs($sk2);
 // Reikia apskaičiuoti kiek buvo $sk1 ir $sk2 naudojantis matematika.
 // NEGALIMA! naudoti jokių palyginimo operatorių (if-else, swich, ()?:)
 // NEGALIMA! naudoti jokių regex ir string funkcijų.
@@ -327,7 +336,7 @@ echo '<br>';
 // Jeigu reikia, kodo patogumui galima panaudoti įvairias funkcijas, bet sprendimo pagrindas turi būti matematinis.
 
 // Atsakymą reikia pateikti formatu:
-// echo '<h3>Skaičius 789 yra pakartotas '.$sk1.' kartų, o skaičius 123 - '.$sk2.' kartų.</h3>';
+echo '<h3>Skaičius 789 yra pakartotas '.$sk1.' kartų, o skaičius 123 - '.$sk2.' kartų.</h3>';
 
 // Kur rudi skaičiai yra pakeisti skaičiais $a ir $b generuojamais kodo.
 
