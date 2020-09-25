@@ -343,6 +343,6 @@ foreach($c as $value) {
 
 // Atsakymą reikia pateikti formatu:
 echo '<h3>Skaičius 789 yra pakartotas '.$sk1.' kartų, o skaičius 123 - '.$sk2.' kartų.</h3>';
-
+echo '<br>';
 // Kur rudi skaičiai yra pakeisti skaičiais $a ir $b generuojamais kodo.
 
